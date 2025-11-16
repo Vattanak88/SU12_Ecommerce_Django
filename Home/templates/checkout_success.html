@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} KHQR {% endblock %}
+
+{% block content %}
+
+    <input type="hidden" v-model="md5" value="">
+
+    <h1>{{ title }}</h1>
+
+    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;height: 100vh;">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">KHQR</h3>
+                <div class="card-banner"></div>
+            </div>
+            <div class="card-body">
+                <div class="user-info">
+                    <h4>{{ name }}</h4>
+                    <h2>$ [[ payment_amount ]]</h2>
+                </div>
+                <div class="border"></div>
+                <div class="card-img">
+                    <span v-if="current_type === 'USD'" class="sign">$</span>
+                    <span v-else class="sign">៛</span>
+{#                    <img src="{% static 'payment/img.png' %}" alt="">#}
+                </div>
+            </div>
+        </div>
+
+        <a href="{% url 'index' %}"
+           style="
+                    display:block;
+                    text-align: left;
+                    width:100%;
+                    text-decoration: none;
+                    font-size: 14px;
+                    margin-top: 10px;
+
+                 "
+        >
+            Back to shopping
+        </a>
+
+    </div>
+{% endblock %}
+
+
+
+
+
+

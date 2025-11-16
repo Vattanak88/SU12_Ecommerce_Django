@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+
+
+<p class="mt-5"></p>
+
+  <!-- empty cart -->
+<div v-if="total_cart_count <= 0" class="container bg-light mt-5 py-5 px-5 rounded"
+     style="max-width: 800px; margin: 100px auto; background-color: #fff; padding: 50px 30px; border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,0.08); text-align: center;">
+    <h3 class="mb-4" style="font-size: 1.8rem; font-weight: 700; color: #2c3e50; display: flex; align-items: center; justify-content: center;">
+        <i class="fa-solid fa-list-check" style="color: #95a5a6; margin-right: 12px; font-size: 1.6rem;"></i>
+        <span class="ms-2">Order Summary</span>
+    </h3>
+    <p style="font-size: 1.1rem; color: #7f8c8d; margin-bottom: 30px;">
+        Your cart is empty.
+    </p>
+    <hr class="my-5" style="border: none; height: 1px; background-color: #eee; margin: 40px 0;">
+    <a href="{% url 'shop' %}" class="btn btn-outline-primary"
+       style="display: inline-block; padding: 12px 32px; border: 2px solid #3498db; color: #3498db; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s;"
+       onmouseover="this.style.backgroundColor='#3498db'; this.style.color='white';"
+       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#3498db';">
+        Return to Shop
+    </a>
+</div>
+<!-- end of empty cart -->
+
+<!-- Cart lists -->
+<div v-else class="container" style="margin:150px auto; max-width: 1100px; padding: 0 15px;">
+    {% csrf_token %}
+
+    <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
+        <div class="p-2 col-sm-12 col-md-12 pb-md-2 col-lg-7 p-lg-0 px-lg-3" style="flex: 1; min-width: 300px;">
+            <!-- render cart -->
+            <div v-for="(item,index) in total_cart_number" :key="index" class="cart-item d-flex align-items-center justify-content-between py-3"
+                 style="background-color: #fff; padding: 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.05); transition: all 0.2s;"
+                 onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.08)';"
+                 onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 12px rgba(0,0,0,0.05)';">
+                
+                <div class="d-flex">
+                    <div class="d-flex justify-content-center align-items-center pe-2 me-3" style="width:50px; border-right:0.3px solid #cdcdcd;">
+                        <!-- this is not use at all -->
+                        <input type="checkbox" @change="checkedCart(item.id,item.status)" :checked="item.status" class="round-50 form-check-input" 
+                               style="width:20px; height:20px; accent-color: #9b59b6; cursor: pointer;">
+                        <!-- end of this is not use at all -->
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div style="width:80px; height:80px; object-fit:contain; margin-right: 15px;">
+                            <img :src="`static/image/clothes/${item.image}`"
+                                 style="object-fit: contain; width:100%; height:80px; border-radius: 8px; border: 1px solid #eee;"
+                                 :alt="item.name" class="cart-item-image me-4">
+                        </div>
+                        <div>
+                            <p class="product-title mb-1" style="font-weight: 600; color: #2c3e50; margin: 0; font-size: 1rem;">[[ item.name ]]</p>
+                            <p class="product-price mb-0" style="color: #27ae60; font-weight: 600; margin: 4px 0 0; font-size: 0.95rem;">$[[ item.price ]]</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center ms-2">
+                    <div>
+                        <div class="quantity-selector d-flex" style="border: 1px solid #ddd; border-radius: 50px; overflow: hidden; display: inline-flex;">
+                            <button class="btn btn-sm bg-danger text-light" :disabled="item.qty === 1" @click="subQty(item.id,item.qty)"
+                                    style="width: 36px; height: 36px; background-color: #e74c3c; color: white; border: none; font-size: 1.1rem; cursor: pointer; transition: 0.2s;"
+                                    :style="item.qty === 1 ? 'opacity: 0.5; cursor: not-allowed;' : ''"
+                                    onmouseover="if(item.qty > 1) this.style.backgroundColor='#c0392b';"
+                                    onmouseout="if(item.qty > 1) this.style.backgroundColor='#e74c3c';">
+                                −
+                            </button>
+                            <span class="quantity-number px-3" style="padding: 0 16px; font-weight: 600; color: #2c3e50; display: flex; align-items: center;">[[ item.qty ]]</span>
+                            <button class="btn btn-sm btn-increase bg-primary text-light" @click="addQty(item.id,item.qty)"
+                                    style="width: 36px; height: 36px; background-color: #3498db; color: white; border: none; font-size: 1.1rem; cursor: pointer; transition: 0.2s;"
+                                    onmouseover="this.style.backgroundColor='#2980b9';"
+                                    onmouseout="this.style.backgroundColor='#3498db';">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                    <div class="ms-4">
+                        <button @click="deleteCart(item.id,index)" type="button" class="btn btn-sm rounded-circle rounded-50 bg-danger text-light"
+                                style="width: 40px; height: 40px; background-color: #e74c3c; color: white; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s;"
+                                onmouseover="this.style.backgroundColor='#c0392b'; this.style.transform='scale(1.1)';"
+                                onmouseout="this.style.backgroundColor='#e74c3c'; this.style.transform='scale(1)';">
+                            <i class="fa-solid fa-trash" style="font-size: 0.9rem;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- end of render cart -->
+        </div>
+
+        <div class="p-2 col-sm-12 col-md-12 pt-md-3 col-lg-5 p-lg-0 px-lg-3" style="flex: 0 0 380px;">
+            <div class="order-summary" style="background-color: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 5px 20px rgba(0,0,0,0.06); height: fit-content; position: sticky; top: 20px;">
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 20px; display: flex; align-items: center;">
+                    <i class="fa-solid fa-receipt" style="color: #9b59b6; margin-right: 10px;"></i>
+                    Order Summary
+                </h3>
+                <div class="summary-item" style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem;">
+                    <span class="label" style="color: #555;">Subtotal</span>
+                    <span id="sub_total" style="font-weight: 600; color: #2c3e50;">$[[ totalAmount.total_usd ]]</span>
+                </div>
+                <div class="summary-item" style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem;">
+                    <span class="label" style="color: #555;">Delivery Fee</span>
+                    <span class="value" style="font-weight: 600; color: #27ae60;">$0.01</span>
+                </div>
+                <hr class="my-3" style="border: none; height: 1px; background-color: #eee; margin: 20px 0;">
+                <div class="summary-total">
+                    <div class="d-flex" style="margin-bottom: 8px;">
+                        <p class="label" style="margin: 0; color: #2c3e50; font-weight: 600; font-size: 1.1rem;">Total <sup style="font-size: 0.7rem; color: #7f8c8d;">(usd)</sup></p>
+                        <p class="ms-auto" style="margin: 0;">
+                            <span style="color: #e74c3c;">$</span>
+                            <span id="total" style="font-weight: 600; color: #e74c3c;">[[ parseFloat(totalAmount.total_usd) + 0.01  ]]</span>
+                        </p>
+                    </div>
+                    <div class="d-flex">
+                        <p class="label" style="margin: 0; color: #8e44ad; font-weight: 600; font-size: 1rem;">Total <sup style="font-size: 0.65rem; color: #7f8c8d;">(riel)</sup></p>
+                        <p class="ms-auto" style="margin: 0;">
+                            <span style="color: #8e44ad;">[[ ( (parseFloat(totalAmount.total_usd) + 0.01) * 4100 ).toFixed(0) ]] ៛</span>
+                        </p>
+                    </div>
+                </div>
+
+                <button type="button" @click="add_cart_checkout" v-if="statusCart" id="btnCheckOut" class="btn w-100 btn-checkout"
+                        style="margin-top: 20px; padding: 14px; background: linear-gradient(135deg, #ad37a6, #8e44ad); color: white; font-weight: 600; font-size: 1.1rem; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s; box-shadow: 0 6px 20px rgba(173,55,166,0.4);"
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 25px rgba(173,55,166,0.5)';"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(173,55,166,0.4)';">
+                    Go to Checkout
+                </button>
+
+                <button type="button" v-if="!statusCart" disabled
+                        style="margin-top: 20px; width: 100%; padding: 14px; background-color: #bdc3c7; color: #7f8c8d; font-weight: 600; font-size: 1.1rem; border: none; border-radius: 50px; cursor: not-allowed;">
+                    Select items to proceed
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of cart lists -->
+
+
+
+{% endblock %}

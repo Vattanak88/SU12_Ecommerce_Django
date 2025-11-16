@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>{{ title }}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Khmer&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --accent: #f59e0b;
+            --bg: #0a0e1a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            min-height: 100vh;
+            font-family: 'Inter', 'Khmer', sans-serif;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-glow {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.2), transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(245, 158, 11, 0.15), transparent 50%);
+            animation: breathe 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        /* Particles */
+        .particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+        .particle {
+            position: absolute;
+            width: 3px; height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+            animation: rise 6s infinite linear;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(100vh); opacity: 0; }
+            15% { opacity: 0.8; }
+            85% { opacity: 0.8; }
+            100% { transform: translateY(-50px) translateX(30px); opacity: 0; }
+        }
+
+        /* Main Container */
+        .success-wrapper {
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Card */
+        .hero-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            animation: floatIn 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* KHQR Badge */
+        .khqr-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        .khqr-badge i { font-size: 12px; }
+
+        /* Success Icon */
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            50% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); }
+        }
+
+        .success-icon i {
+            font-size: 48px;
+            color: white;
+            animation: pop 0.6s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.4s both;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+
+        /* Title */
+        .title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        /* Amount */
+        .amount-box {
+            background: rgba(160, 16, 185, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .amount-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .amount-value {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Details Card (Collapsible on Mobile) */
+        .details-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+
+        .details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .details-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-icon {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        .details-body {
+            margin-top: 20px;
+            display: grid;
+            gap: 16px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .details-body.open {
+            max-height: 300px;
+            padding-top: 8px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-label i {
+            width: 14px;
+            font-size: 10px;
+            color: var(--accent);
+        }
+
+        .info-value {
+            color: white;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            background: linear-gradient(135deg, rgba(160, 16, 185, 0.4), rgba(214, 108, 233, 0.4));
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(160, 16, 185, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: sticky;
+            bottom: 16px;
+            margin-top: 8px;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(160, 16, 185, 0.4);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .success-wrapper { max-width: 480px; }
+            .hero-card { padding: 48px 40px; }
+            .title { font-size: 36px; }
+            .amount-value { font-size: 48px; }
+            .details-body { max-height: none !important; padding-top: 0 !important; }
+            .toggle-icon { display: none; }
+            .details-header { cursor: default; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="success-wrapper">
+        <!-- Hero Card -->
+        <div class="hero-card">
+            <div class="khqr-badge">
+                <i class="fas fa-qrcode"></i> KHQR
+            </div>
+
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+
+            <h1 class="title">Payment Successful</h1>
+            <p class="subtitle">Your transaction is complete. Receipt sent to your email.</p>
+
+            <div class="amount-box">
+                <div class="amount-label">Amount Paid</div>
+                <div class="amount-value">
+                    <span id="sign"></span>
+                    <span id="price">0.00</span>
+                </div>
+            </div>
+
+            <!-- Collapsible Details -->
+            <div class="details-card">
+                <div class="details-header" onclick="toggleDetails(this)">
+                    <div class="details-title">
+                        <i class="fas fa-receipt"></i>
+                        Transaction Details
+                    </div>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+
+                <div class="details-body">
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-hashtag"></i> ID</span>
+                        <span class="info-value" id="txnId">TXN-2025-749283</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-calendar"></i> Date</span>
+                        <span class="info-value" id="date"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-credit-card"></i> Method</span>
+                        <span class="info-value">•••• <span id="currencyType"></span></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-shield-alt"></i> Status</span>
+                        <span class="status-badge">
+                            <i class="fas fa-check-circle"></i> Completed
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <a href="{% url 'index' %}" class="cta-btn" onclick="downloadReceipt()">
+                <i class="fas fa-home"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Telegram Sender
+        let cart_id = new Set(JSON.parse(localStorage.getItem('cart_id')) || []);
+        let csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+        fetch('/telegram_sender/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrfToken },
+            body: JSON.stringify({ 'cart_id': [...cart_id] })
+        })
+        .then(res => res.ok ? res.json() : res.text().then(t => { throw new Error(t); }))
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+    </script>
+
+    <script>
+        // Payment Data
+        let arr = JSON.parse(localStorage.getItem('paymentAmount')) || [];
+        const date = new Date(arr.createdDateMs);
+
+        const khDate = date.toLocaleDateString('en-GB', {
+            weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+        }) + ' at ' + date.toLocaleTimeString('en-US', {
+            hour: '2-digit', minute: '2-digit'
+        });
+
+        document.getElementById('date').innerText = khDate;
+        document.getElementById('price').innerText = arr.amount;
+        document.getElementById('sign').innerText = arr.currencyType === 'KHR' ? '៛' : '$';
+        document.getElementById('currencyType').innerText = arr.currencyType;
+    </script>
+
+    <script>
+        // Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const count = window.innerWidth < 768 ? 12 : 20;
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDelay = Math.random() * 6 + 's';
+                p.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                container.appendChild(p);
+            }
+        }
+
+        // Generate TXN
+        function generateTxnId() {
+            const num = Math.floor(Math.random() * 900000) + 100000;
+            document.getElementById('txnId').textContent = `TXN-2025-${num}`;
+        }
+
+        // Toggle Details
+        function toggleDetails(el) {
+            if (window.innerWidth >= 768) return;
+            const body = el.nextElementSibling;
+            const icon = el.querySelector('.toggle-icon');
+            body.classList.toggle('open');
+            icon.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+        }
+ 
+
+        window.onload = () => {
+            createParticles();
+            generateTxnId();
+        };
+    </script>
+</body>
+</html>

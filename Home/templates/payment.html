@@ -1,0 +1,291 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'css/payment.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;height: 100vh;">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">KHQR</h3>
+                <div class="card-banner"></div>
+            </div>
+            <div class="card-body">
+                <div class="user-info">
+                    <h4>{{ merchant_name }}</h4>
+                    <h2>
+                        {% if currency_type == 'USD' %}
+                        $
+                        {% elif currency_type == 'KHR' %}
+                        ៛
+                        {% endif %}
+                        {{ total_payment }}
+                    </h2>
+                </div>
+                <div class="border"></div>
+                <div class="card-img">
+                    {% if currency_type == 'USD' %}
+                    <span  class="sign">$</span>
+                    {% elif currency_type == 'KHR' %}
+                    <span  class="sign">៛</span>
+                    {% endif %}
+{#                     <img src="{% static 'qrcodes' %}/{{ filename }}" alt="QR Code">#}
+                        <img src="/media/qrcodes/{{ filename }}" alt="dsjfks">
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="md5" value="{{ md5 }}">
+
+{#        <a href="{% url 'shop' %}" style=" display:block; text-align: left; width:100%; text-decoration: none; font-size: 14px; margin-top: 10px; " > Back to shopping </a>#}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+        let  orderId = localStorage.getItem('order_id');
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+        const setTimer = setInterval(() => {
+            let md5 = document.getElementById('md5').value;
+
+            axios.post('/check_payment_status/',
+                { md5: md5 },
+                { headers: {"X-CSRFToken": csrfToken} }
+            ).then(res => {
+                {#console.log('data = ',res.data.data);#}
+                if (res.data.data == null) {
+                    console.log('Scan lerng...');
+                } else {
+                    clearInterval(setTimer);
+
+                    if(!res.data.responseCode) {
+                        console.log('Payment = ',res.data.responseMessage);
+                        console.log('data = ',res.data.data);
+                        console.log(res.data.responseMessage);
+
+                        let from_account_id = res.data.data.fromAccountId;
+                        let description = res.data.data.description || 'Your payment was completed.';
+                        let currency_type = res.data.data.currency;
+                        let amount = res.data.data.amount;
+                        let create_date = new Date(res.data.data.createdDateMs);
+                        let hash = res.data.data.hash;
+                        let order_id = orderId;
+                        let formattedDate = create_date.toLocaleDateString('en-US', {
+                            weekday: 'long',   // Example: 'Monday'
+                            year: 'numeric',   // Example: '2025'
+                            month: 'long',     // Example: 'December'
+                            day: 'numeric'     // Example: '1'
+                        });
+                        let cart_id =  new Set(JSON.parse(localStorage.getItem('cart_id')) || []);
+
+                        fetch('/payment_success/',{
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': csrfToken,
+                            },
+                            body: JSON.stringify({
+                                'from_account_id': from_account_id.toString(),
+                                'description': description.toString(),
+                                'currency_type': currency_type.toString(),
+                                'amount': amount,
+                                'formattedDate': formattedDate,
+                                'hash': hash.toString(),
+                                'status' : 1,
+                                'order_id' : order_id,
+                                'cart_id': [...cart_id],   // ✅ FIXED
+                            })
+                        }).then( res => {
+                            if(!res.ok){
+                                throw new Error('Error' + res);
+                            }
+                            return res.json();
+                        }).then(data => {
+                            console.log(data);
+                            console.log('cart =====',[...cart_id])
+
+                            if(data.status === 'ok'){
+                                let amount = res.data.data.amount;
+                                let currency = res.data.data.currency;
+                                let externalRef = res.data.data.externalRef;
+                                let createdDateMs = res.data.data.createdDateMs;
+
+                                payment = {
+                                    'amount' : amount,
+                                    'currencyType' : currency,
+                                    'externalRef' : externalRef,
+                                    'createdDateMs' : createdDateMs }
+
+                                localStorage.setItem('paymentAmount',JSON.stringify(payment));
+                                updateDisabledCart(order_id);
+
+                                window.location.href = data.redirect;
+                            }
+                        });
+                    }
+                }
+
+            }).catch(error => {
+                console.log(error);
+                clearInterval(setTimer);
+            });
+
+        }, 5000);
+
+        function updateDisabledCart(cart_id){
+            fetch('/update_disabled_cart/',{
+                method : 'post',
+                headers : {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken,
+                },
+                body : JSON.stringify({
+                    'cart_id' : cart_id
+                })
+            }).then(res => {
+                if(!res.ok){
+                    throw new Error('Error' + res);
+                }
+                return res.json();
+            }).then(data => {
+                console.log(data);
+            }).catch(error => {
+                // Handle any errors that occur during the request
+                console.error('Error:', error.response ? error.response.data : error.message);
+            });
+
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#{% extends 'base.html' %}#}
+{##}
+{#{% load static %}#}
+{##}
+{#{% block title %} KHQR {% endblock %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#    <input type="text"  value="{{ md5 }}">#}
+{##}
+{#    <h1>{{ title }}</h1>#}
+{##}
+{#    <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;height: 100vh;">#}
+{#        <div class="card">#}
+{#            <div class="card-header">#}
+{#                <h3 class="card-title">KHQR</h3>#}
+{#                <div class="card-banner"></div>#}
+{#            </div>#}
+{#            <div class="card-body">#}
+{#                <div class="user-info">#}
+{#                    <h4>{{ merchant_name }}</h4>#}
+{#                    <h2>$ {{ total_payment }}</h2>#}
+{#                </div>#}
+{#                <div class="border"></div>#}
+{#                <div class="card-img">#}
+{#                    {% if currency_type == 'USD' %}#}
+{#                    <span  class="sign">$</span>#}
+{#                    {% elif currency_type == 'KHR' %}#}
+{#                    <span  class="sign">៛</span>#}
+{#                    {% endif %}#}
+{##}
+{#                    <img src="{% static 'payment/img.png' %}" alt="">#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#                    <p>[[ md5 ]] </p>#}
+{##}
+{#        <a href="{% url 'shop' %}"#}
+{#           style="#}
+{#                    display:block;#}
+{#                    text-align: left;#}
+{#                    width:100%;#}
+{#                    text-decoration: none;#}
+{#                    font-size: 14px;#}
+{#                    margin-top: 10px;#}
+{##}
+{#                 "#}
+{#        >#}
+{#            Back to shopping#}
+{#        </a>#}
+{##}
+{#    </div>#}
+{#{% endblock %}#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>KHQR</title>#}
+{#    <link href="{% static 'css/payment.css' %}" rel="stylesheet">#}
+{#</head>#}
+{#<body>#}
+{#    <div class="card">#}
+{#        <div class="card-header">#}
+{#            <h3 class="card-title">KHQR</h3>#}
+{#            <div class="card-banner"></div>#}
+{#        </div>#}
+{#        <div class="card-body">#}
+{#            <div class="user-info">#}
+{#                <h4>{{ name }}</h4>#}
+{#                <h2>$ 1000</h2>#}
+{#            </div>#}
+{#            <div class="border"></div>#}
+{#            <div class="card-img">#}
+{#                <span class="sign">$</span>#}
+{#                <span class="sign">៛</span>#}
+{#                <img src="{% static 'payment/img.png' %}" alt="">#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</body>#}
+{#</html>#}

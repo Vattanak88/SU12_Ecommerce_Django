@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Check Out {% endblock %}
+
+{% block content %}
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div class="checkout-container" style="display: flex; flex-wrap: wrap; gap: 30px; background-color: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden;">
+        
+        <!-- Checkout Form -->
+        <form @submit.prevent="add_customer_info" class="checkout-form" style="flex: 1; min-width: 300px; padding: 30px; background-color: #f9f9f9;">
+            {% csrf_token %}
+            <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 24px; color: #1a1a1a; text-align: center;">Checkout</h1>
+
+            <!-- Contact Information -->
+            <div class="form-section" style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 16px; color: #2c3e50;">Contact Information</h2>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label for="phone-number" class="required" style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50;">Phone Number <span style="color: #e74c3c;">*</span></label>
+                    <input type="text" id="phone-number" v-model="phoneNumber" required placeholder="097 29 06 610"
+                           style="width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; transition: border 0.3s;">
+                </div>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label for="email" class="required" style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50;">Email Address <span style="color: #e74c3c;">*</span></label>
+                    <input type="email" id="email" v-model="email" placeholder="your@email.com" required
+                           style="width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; transition: border 0.3s;">
+                </div>
+            </div>
+
+            <!-- Delivery Location -->
+            <div class="form-section" style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 16px; color: #2c3e50;">Delivery Location</h2>
+                <div class="location-details" id="home-details">
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="full-name" class="required" style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50;">Full Name <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="full-name" v-model="fullName" placeholder="Meng Sonly" required
+                               style="width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="address" class="required" style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50;">Address <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="address" v-model="address" required placeholder="No. 86A, Street 110, Russian Federation Blvd (110), Phnom Penh"
+                               style="width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="instructions" style="display: block; margin-bottom: 6px; font-weight: 500; color: #2c3e50;">Delivery Instructions (Optional)</label>
+                        <textarea id="instructions" v-model="instructions" rows="3" placeholder="e.g., Leave at front door, ring bell, etc."
+                                  style="width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currency Type -->
+            <div class="form-section" style="margin-bottom: 28px;">
+                <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 16px; color: #2c3e50;">Currency Type</h2>
+
+                <div class="payment-options" style="display: flex; flex-direction: column; gap: 12px;">
+                    <div class="payment-option" style="display: flex; align-items: center; cursor: pointer; padding: 14px; border: 2px solid #e0e0e0; border-radius: 10px; transition: all 0.3s; background-color: #fff;"
+                         :style="currencyType === 'USD' ? 'border-color: #3498db; background-color: #f0f8ff;' : ''">
+                        <input type="radio" id="usd-payment" name="payment-method" value="USD" v-model="currencyType" style="display: none;">
+                        <label for="usd-payment" class="payment-label" style="display: flex; align-items: center; width: 100%; margin: 0; cursor: pointer;">
+                            <span class="radio-indicator" style="width: 20px; height: 20px; border: 2px solid #999; border-radius: 50%; margin-right: 12px; position: relative; transition: all 0.3s;"
+                                  :style="currencyType === 'USD' ? 'border-color: #3498db; background-color: #3498db;' : ''">
+                                <span v-if="currencyType === 'USD'" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; background: white; border-radius: 50%;"></span>
+                            </span>
+                            <div class="payment-icon usd-icon" style="margin-right: 12px; font-size: 20px; color: #27ae60;">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="payment-text">
+                                <div class="payment-title" style="font-weight: 600; color: #2c3e50;">USD</div>
+                                <div class="payment-desc" style="font-size: 14px; color: #7f8c8d;">Pay with US Dollars via <b>KHQR</b></div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="payment-option" style="display: flex; align-items: center; cursor: pointer; padding: 14px; border: 2px solid #e0e0e0; border-radius: 10px; transition: all 0.3s; background-color: #fff;"
+                         :style="currencyType === 'KHR' ? 'border-color: #e67e22; background-color: #fdf5e6;' : ''">
+                        <input type="radio" id="riel-payment" name="payment-method" value="KHR" v-model="currencyType" style="display: none;">
+                        <label for="riel-payment" class="payment-label" style="display: flex; align-items: center; width: 100%; margin: 0; cursor: pointer;">
+                            <span class="radio-indicator" style="width: 20px; height: 20px; border: 2px solid #999; border-radius: 50%; margin-right: 12px; position: relative; transition: all 0.3s;"
+                                  :style="currencyType === 'KHR' ? 'border-color: #e67e22; background-color: #e67e22;' : ''">
+                                <span v-if="currencyType === 'KHR'" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; background: white; border-radius: 50%;"></span>
+                            </span>
+                            <div class="payment-icon riel-icon" style="margin-right: 12px; font-size: 20px; color: #e67e22;">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="payment-text">
+                                <div class="payment-title" style="font-weight: 600; color: #2c3e50;">Riel</div>
+                                <div class="payment-desc" style="font-size: 14px; color: #7f8c8d;">Pay with Cambodian Riel via <b>KHQR</b></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn" style="width: 100%; padding: 14px; background-color: #3498db; color: white; font-size: 18px; font-weight: 600; border: none; border-radius: 10px; cursor: pointer; transition: background-color 0.3s;">
+                Complete Order
+            </button>
+
+            <div class="secure-checkout" style="margin-top: 16px; text-align: center; font-size: 14px; color: #7f8c8d; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-lock" style="margin-right: 6px; color: #27ae60;"></i> 
+                Your payment information is secure and encrypted
+            </div>
+        </form>
+
+        <!-- Order Summary -->
+        <div class="order-summary" style="flex: 1; min-width: 300px; padding: 30px; background-color: #ffffff; border-left: 1px solid #eee;">
+            <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 20px; color: #1a1a1a;">Order Summary</h2>
+
+            <!-- Product Items -->
+            <div class="order-items" style="margin-bottom: 20px;">
+                <div class="order-item" v-for="item in getSelectedCartItems" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px dashed #eee;">
+                    <div class="item-details" style="display: flex; align-items: center; gap: 12px;">
+                        <div class="item-image" style="flex-shrink: 0;">
+                            <img :src="`static/image/clothes/${item.image}`" alt="" style="width:60px; height:60px; object-fit: cover; border-radius: 6px; border: 1px solid #eee;">
+                        </div>
+                        <div>
+                            <p class="item-name m-0" style="margin: 0; font-weight: 500; color: #2c3e50;">[[ item.name ]]</p>
+                            <p style="margin: 4px 0 0; font-size: 14px; color: #7f8c8d;">Quantity: [[ item.qty ]]</p>
+                        </div>
+                    </div>
+                    <div class="item-price" style="font-weight: 600; color: #2c3e50;">$[[ item.price ]]</div>
+                </div>
+            </div>
+
+            <!-- Summary Totals -->
+            <div class="summary-details" style="border-top: 1px solid #eee; padding-top: 16px;">
+                <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 15px;">
+                    <div style="color: #555;">Subtotal</div>
+                    <div style="font-weight: 600;">$[[ totalAmount.total_usd ]]</div>
+                </div>
+                <div class="summary-row" style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 15px;">
+                    <div style="color: #555;">Shipping</div>
+                    <div style="font-weight: 600; color: #27ae60;">$[[ totalAmount.shipping ]]</div>
+                </div>
+                <div class="summary-row summary-total" style="display: flex; justify-content: space-between; margin: 16px 0 8px; font-size: 18px; font-weight: 700; color: #1a1a1a;">
+                    <div>Total <sup style="font-size: 12px; color: #7f8c8d;">(USD)</sup></div>
+                    <div>$[[ totalAmount.totalPlusShip_usd ]]</div>
+                </div>
+                <div class="summary-row summary-total" style="display: flex; justify-content: space-between; font-size: 16px; color: #e67e22; font-weight: 600;">
+                    <div>Total <sup style="font-size: 11px; color: #7f8c8d;">(KHR)</sup></div>
+                    <div>[[ totalAmount.totalPlusShip_kh ]]</div>
+                </div>
+            </div>
+
+            <!-- Promotional Info -->
+            <div style="margin-top: 24px; padding: 16px; background-color: #f8f9fa; border-radius: 10px; border: 1px dashed #ddd;">
+                <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                    <i class="fas fa-shipping-fast" style="color: #27ae60; margin-right: 10px; font-size: 18px;"></i>
+                    <div>
+                        <div style="font-weight: 600; color: #2c3e50;">Free Shipping</div>
+                        <div style="font-size: 13px; color: #7f8c8d;">On orders over $50</div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <i class="fas fa-undo" style="color: #3498db; margin-right: 10px; font-size: 18px;"></i>
+                    <div>
+                        <div style="font-weight: 600; color: #2c3e50;">Easy Returns</div>
+                        <div style="font-size: 13px; color: #7f8c8d;">30-day return policy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

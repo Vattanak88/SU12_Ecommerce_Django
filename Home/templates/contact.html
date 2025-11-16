@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Contact {% endblock %}
+
+{% block content %}
+
+   <section class="contact-container">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="text-muted mb-5">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+
+            <div class="row g-5">
+                <!-- Contact Information -->
+                <div class="col-lg-4">
+                    <div class="contact-card p-5 text-center h-100">
+                        <div class="contact-icon icon-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h5>Our Location</h5>
+                            <p>123 Business Street, Suite 100<br>Phnom Penh, Cambodia 12000</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="contact-card p-5 text-center h-100">
+                        <div class="contact-icon icon-phone">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h5>Phone Number</h5>
+                            <p>+855 23 456 789<br>+855 81 234 567</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="contact-card p-5 text-center h-100">
+                        <div class="contact-icon icon-email">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h5>Email Address</h5>
+                            <p>hello@contacthub.com<br>support@contacthub.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-card p-5">
+                        <h3 class="mb-4 text-center">Send us a Message</h3>
+                        
+                        <form id="contactForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="col-12">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <select class="form-select" id="subject" required>
+                                        <option value="">Choose a subject...</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="support">Technical Support</option>
+                                        <option value="sales">Sales Question</option>
+                                        <option value="feedback">Feedback</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" placeholder="Tell us more about your inquiry..." required></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-submit">
+                                        <span class="submit-text">Send Message</span>
+                                        <span class="spinner-border spinner-border-sm d-none" role="status"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="alert alert-success" role="alert" id="successAlert">
+                            <i class="fas fa-check-circle me-2"></i>
+                            Thank you for your message! We'll get back to you within 24 hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.767009193324!2d104.92820931424735!3d11.55637399178845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3109519ed7f851b3%3A0x8e7c5c5a5c5a5c5a!2sPhnom%20Penh%2C%20Cambodia!5e0!3m2!1sen!2skh!4v1690000000000!5m2!1sen!2skh" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <!-- Social Links -->
+            <div class="text-center social-links mt-5">
+                <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="tw"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="ig"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="li"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

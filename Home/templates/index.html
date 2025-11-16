@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+   <!-- Hero Section -->
+        <section class="hero-section" id="home">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <div class="hero-content position-relative">
+                  <h1>New Arrival<br /></h1>
+                  <p class="lead mb-4">
+                    Discover the latest trends in fashion and style. Shop our
+                    newest collection with exclusive deals and premium quality
+                    products.
+                  </p>
+                  <a href="#shopping" class="btn btn-shop-now">
+                    Shop Now <i class="fas fa-arrow-right ms-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <img
+                  src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=500&fit=crop"
+                  alt="Shopping"
+                  class="img-fluid rounded hero-image"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="feature-box">
+                  <i class="fas fa-truck-fast feature-icon"></i>
+                  <h4>Fast Delivery</h4>
+                  <p class="text-muted">Quick shipping on all orders</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-box">
+                  <i class="fas fa-undo feature-icon"></i>
+                  <h4>Easy Returns</h4>
+                  <p class="text-muted">30-day return policy</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-box">
+                  <i class="fas fa-lock feature-icon"></i>
+                  <h4>Secure Payment</h4>
+                  <p class="text-muted">100% secure transactions</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section" id="shopping">
+          <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="card category-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop"
+                    alt="Electronics"
+                  />
+                  <div class="card-body text-center">
+                    <h5 class="fw-bold mb-2">Electronics</h5>
+                    <p class="text-muted mb-0">Latest gadgets & technology</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card category-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=400&h=300&fit=crop"
+                    alt="Fashion"
+                  />
+                  <div class="card-body text-center">
+                    <h5 class="fw-bold mb-2">Fashion</h5>
+                    <p class="text-muted mb-0">Trendy clothing & accessories</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card category-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&h=300&fit=crop"
+                    alt="Home"
+                  />
+                  <div class="card-body text-center">
+                    <h5 class="fw-bold mb-2">Home & Living</h5>
+                    <p class="text-muted mb-0">Furniture & home decor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="products-section">
+          <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="row g-4">
+              <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                  <div class="position-relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop"
+                      alt="Headphones"
+                    />
+                    <span class="sale-badge">-20%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Wireless Headphones</h5>
+                    <div class="product-rating mb-2">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <span class="text-muted ms-1">(124)</span>
+                    </div>
+                    <p class="mb-3">
+                      <span class="product-price">$79.99</span>
+                      <span class="old-price">$99.99</span>
+                    </p>
+                    <button class="btn btn-add-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop"
+                    alt="Smart Watch"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Smart Watch</h5>
+                    <div class="product-rating mb-2">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <span class="text-muted ms-1">(89)</span>
+                    </div>
+                    <p class="mb-3">
+                      <span class="product-price">$199.99</span>
+                    </p>
+                    <button class="btn btn-add-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                  <div class="position-relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop"
+                      alt="Sunglasses"
+                    />
+                    <span class="sale-badge">-15%</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Designer Sunglasses</h5>
+                    <div class="product-rating mb-2">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <span class="text-muted ms-1">(56)</span>
+                    </div>
+                    <p class="mb-3">
+                      <span class="product-price">$84.99</span>
+                      <span class="old-price">$99.99</span>
+                    </p>
+                    <button class="btn btn-add-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-sm-6">
+                <div class="card product-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=300&h=300&fit=crop"
+                    alt="Sneakers"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Premium Sneakers</h5>
+                    <div class="product-rating mb-2">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star-half-alt"></i>
+                      <span class="text-muted ms-1">(201)</span>
+                    </div>
+                    <p class="mb-3">
+                      <span class="product-price">$129.99</span>
+                    </p>
+                    <button class="btn btn-add-cart">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p class="mb-0">
+                  Get the latest updates on new products and upcoming sales
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input
+                    type="email"
+                    class="form-control newsletter-input"
+                    placeholder="Enter your email"
+                  />
+                  <button class="btn btn-subscribe" type="button">
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+{% endblock %}

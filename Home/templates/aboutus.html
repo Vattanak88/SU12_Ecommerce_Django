@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} About us {% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-center text-white" 
+         style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519389950470-47ba2b3c5760?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; 
+                padding: 120px 20px; position: relative; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+  <div class="container position-relative" style="max-width: 1100px; margin: 0 auto; padding: 0 15px;">
+    <h1 class="display-3 fw-bold mb-4" style="font-size: 3.2rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.4);">We Are SU1.2 - Ecommerce</h1>
+    <p class="lead mb-5" style="font-size: 1.4rem; max-width: 700px; margin: 0 auto; opacity: 0.95;">Connecting Cambodia to the World – One Message at a Time</p>
+    <a href="#about" class="btn btn-light btn-lg px-5" 
+       style="background-color: #fff; color: #2c3e50; padding: 14px 32px; font-weight: 600; border-radius: 50px; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+       onmouseover="this.style.backgroundColor='#f8f9fa'; this.style.transform='translateY(-2px)';"
+       onmouseout="this.style.backgroundColor='#fff'; this.style.transform='translateY(0)';">
+      Discover Our Story
+    </a>
+  </div>
+</section>
+
+<!-- About Us -->
+<section class="py-5" id="about" style="padding: 80px 0; background-color: #f9f9f9;">
+  <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 15px;">
+    <div class="row align-items-center g-5" style="display: flex; flex-wrap: wrap; margin: -40px -15px;">
+      <div class="col-lg-6" style="flex: 0 0 50%; max-width: 50%; padding: 40px 15px;">
+        <div class="about-img" style="border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+               alt="SU1.2 - Ecommerce Team" 
+               style="width: 100%; height: auto; display: block; transition: transform 0.4s;"
+               onmouseover="this.style.transform='scale(1.05)'"
+               onmouseout="this.style.transform='scale(1)'">
+        </div>
+      </div>
+      <div class="col-lg-6" style="flex: 0 0 50%; max-width: 50%; padding: 40px 15px;">
+        <h2 class="section-title mb-4" style="font-size: 2.2rem; font-weight: 700; color: #2c3e50; position: relative; padding-bottom: 12px;">
+          Who We Are
+          <span style="position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background-color: #e74c3c; border-radius: 2px;"></span>
+        </h2>
+        <p class="lead" style="font-size: 1.2rem; color: #555; margin-bottom: 20px;">
+          Founded in the heart of <strong style="color: #e74c3c;">Phnom Penh, Cambodia</strong> in 2018, SU1.2 - Ecommerce has grown from a small startup to Cambodia's leading communication solutions provider.
+        </p>
+        <p style="color: #666; margin-bottom: 18px;">
+          We believe that every business – from street-side cafés in Siem Reap to tech startups in Phnom Penh – deserves world-class communication tools that are simple, reliable, and affordable.
+        </p>
+        <p style="color: #666; margin-bottom: 24px;">
+          Today, we proudly serve over <strong style="color: #27ae60;">15,000 businesses</strong> across all 25 provinces of Cambodia and have expanded our reach to ASEAN neighbors.
+        </p>
+        <div class="mt-4">
+          <a href="contact.html" class="btn btn-primary" 
+             style="background-color: #e74c3c; color: white; padding: 12px 28px; font-weight: 600; border-radius: 50px; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 15px rgba(231,76,60,0.3);"
+             onmouseover="this.style.backgroundColor='#c0392b'; this.style.transform='translateY(-2px)';"
+             onmouseout="this.style.backgroundColor='#e74c3c'; this.style.transform='translateY(0)';">
+            Get Started Today
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-5 bg-light" style="padding: 80px 0; background-color: #f8f9fa;">
+  <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 15px;">
+    <div class="text-center mb-5">
+      <h2 class="section-title" style="font-size: 2.2rem; font-weight: 700; color: #2c3e50; position: relative; display: inline-block; padding-bottom: 12px;">
+        Why Choose SU1.2 - Ecommerce?
+        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: #3498db; border-radius: 2px;"></span>
+      </h2>
+    </div>
+    <div class="row g-4" style="display: flex; flex-wrap: wrap; margin: -16px;">
+      <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; padding: 16px;">
+        <div class="feature-card" 
+             style="background: white; padding: 30px 20px; border-radius: 16px; text-align: center; height: 100%; box-shadow: 0 5px 20px rgba(0,0,0,0.06); transition: all 0.3s;"
+             onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.12)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.06)';">
+          <div class="feature-icon" style="width: 70px; height: 70px; background-color: #e8f5e8; color: #27ae60; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <i class="fas fa-users"></i>
+          </div>
+          <h4 style="font-size: 1.3rem; font-weight: 600; color: #2c3e50; margin-bottom: 14px;">Local Expertise</h4>
+          <p style="color: #666; font-size: 0.95rem;">Born and raised in Cambodia. We understand Khmer business culture and speak your language – literally and figuratively.</p>
+        </div>
+      </div>
+      <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; padding: 16px;">
+        <div class="feature-card" 
+             style="background: white; padding: 30px 20px; border-radius: 16px; text-align: center; height: 100%; box-shadow: 0 5px 20px rgba(0,0,0,0.06); transition: all 0.3s;"
+             onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.12)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.06)';">
+          <div class="feature-icon" style="width: 70px; height: 70px; background-color: #e8f4fd; color: #3498db; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h4 style="font-size: 1.3rem; font-weight: 600; color: #2c3e50; margin-bottom: 14px;">24/7 Khmer Support</h4>
+          <p style="color: #666; font-size: 0.95rem;">Real humans, speaking Khmer & English, available round the clock via phone, chat, and Telegram.</p>
+        </div>
+      </div>
+      <div class="col-md-4" style="flex: 0 0 33.333%; max-width: 33.333%; padding: 16px;">
+        <div class="feature-card" 
+             style="background: white; padding: 30px 20px; border-radius: 16px; text-align: center; height: 100%; box-shadow: 0 5px 20px rgba(0,0,0,0.06); transition: all 0.3s;"
+             onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.12)';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.06)';">
+          <div class="feature-icon" style="width: 70px; height: 70px; background-color: #fdf2e8; color: #e67e22; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4 style="font-size: 1.3rem; font-weight: 600; color: #2c3e50; margin-bottom: 14px;">Bank-Grade Security</h4>
+          <p style="color: #666; font-size: 0.95rem;">Your data is encrypted and stored securely in Phnom Penh data centers. We never sell your information.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our Journey -->
+<section class="py-5" style="padding: 80px 0; background-color: #fff;">
+  <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 15px;">
+    <div class="text-center mb-5">
+      <h2 class="section-title" style="font-size: 2.2rem; font-weight: 700; color: #2c3e50; position: relative; display: inline-block; padding-bottom: 12px;">
+        Our Journey
+        <span style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: #9b59b6; border-radius: 2px;"></span>
+      </h2>
+      <p class="lead" style="color: #7f8c8d; max-width: 700px; margin: 16px auto 0; font-size: 1.1rem;">
+        From a garage in Toul Kork to Cambodia's #1 communication platform
+      </p>
+    </div>
+
+    <div class="timeline" style="position: relative; max-width: 900px; margin: 50px auto; padding: 0 20px;">
+      <!-- Timeline Line -->
+      <div style="position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background-color: #e0e0e0; transform: translateX(-50%);"></div>
+
+      <!-- Timeline Items -->
+      <div class="timeline-item" style="position: relative; margin-bottom: 50px; display: flex; justify-content: flex-start;">
+        <div class="timeline-content left" 
+             style="width: 45%; background: #f8f9fa; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; margin-right: auto;">
+          <div style="position: absolute; top: 28px; right: -12px; width: 0; height: 0; border-left: 12px solid #f8f9fa; border-top: 10px solid transparent; border-bottom: 10px solid transparent;"></div>
+          <h5 style="font-weight: 700; color: #2c3e50; margin-bottom: 10px; font-size: 1.2rem;">2018 - The Beginning</h5>
+          <p style="color: #666; font-size: 0.95rem; line-height: 1.6;">Founded by three friends in a small office in Phnom Penh with just $5,000 and a dream to make business communication easier in Cambodia.</p>
+        </div>
+        <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 20px; width: 16px; height: 16px; background-color: #e74c3c; border: 4px solid white; border-radius: 50%; box-shadow: 0 0 0 4px #f8d7da;"></div>
+      </div>
+
+      <div class="timeline-item" style="position: relative; margin-bottom: 50px; display: flex; justify-content: flex-end;">
+        <div class="timeline-content right" 
+             style="width: 45%; background: #e8f5e8; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; margin-left: auto;">
+          <div style="position: absolute; top: 28px; left: -12px; width: 0; height: 0; border-right: 12px solid #e8f5e8; border-top: 10px solid transparent; border-bottom: 10px solid transparent;"></div>
+          <h5 style="font-weight: 700; color: #27ae60; margin-bottom: 10px; font-size: 1.2rem;">2019 - First 1,000 Customers</h5>
+          <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Reached 1,000 businesses within 12 months. Launched Khmer-language interface and Wing/ABA integration.</p>
+        </div>
+        <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 20px; width: 16px; height: 16px; background-color: #27ae60; border: 4px solid white; border-radius: 50%; box-shadow: 0 0 0 4px #d5edda;"></div>
+      </div>
+
+      <div class="timeline-item" style="position: relative; margin-bottom: 50px; display: flex; justify-content: flex-start;">
+        <div class="timeline-content left" 
+             style="width: 45%; background: #e8f4fd; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; margin-right: auto;">
+          <div style="position: absolute; top: 28px; right: -12px; width: 0; height: 0; border-left: 12px solid #e8f4fd; border-top: 10px solid transparent; border-bottom: 10px solid transparent;"></div>
+          <h5 style="font-weight: 700; color: #3498db; margin-bottom: 10px; font-size: 1.2rem;">2021 - National Expansion</h5>
+          <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Opened offices in Siem Reap, Battambang, and Sihanoukville. Became the first Cambodian company to offer Telegram Business API.</p>
+        </div>
+        <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 20px; width: 16px; height: 16px; background-color: #3498db; border: 4px solid white; border-radius: 50%; box-shadow: 0 0 0 4px #d1ecf1;"></div>
+      </div>
+
+      <div class="timeline-item" style="position: relative; margin-bottom: 50px; display: flex; justify-content: flex-end;">
+        <div class="timeline-content right" 
+             style="width: 45%; background: #fdf2e8; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; margin-left: auto;">
+          <div style="position: absolute; top: 28px; left: -12px; width: 0; height: 0; border-right: 12px solid #fdf2e8; border-top: 10px solid transparent; border-bottom: 10px solid transparent;"></div>
+          <h5 style="font-weight: 700; color: #e67e22; margin-bottom: 10px; font-size: 1.2rem;">2023 - ASEAN Launch</h5>
+          <p style="color: #555; font-size: 0.95rem; line-height: 1.6;">Expanded to Vietnam and Laos. Raised $2M from regional investors. Now serving 10,000+ businesses.</p>
+        </div>
+        <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 20px; width: 16px; height: 16px; background-color: #e67e22; border: 4px solid white; border-radius: 50%; box-shadow: 0 0 0 4px #fdebd0;"></div>
+      </div>
+
+      <div class="timeline-item" style="position: relative; margin-bottom: 0; display: flex; justify-content: flex-start;">
+        <div class="timeline-content left" 
+             style="width: 45%; background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 28px; border-radius: 12px; box-shadow: 0 8px 25px rgba(155,89,182,0.3); position: relative; margin-right: auto;">
+          <div style="position: absolute; top: 28px; right: -12px; width: 0; height: 0; border-left: 12px solid #9b59b6; border-top: 10px solid transparent; border-bottom: 10px solid transparent;"></div>
+          <h5 style="font-weight: 700; margin-bottom: 10px; font-size: 1.2rem;">2025 - Today</h5>
+          <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.95;">Cambodia's most trusted communication platform with 15,000+ customers and growing 150% year-over-year.</p>
+        </div>
+        <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 20px; width: 20px; height: 20px; background-color: #9b59b6; border: 5px solid white; border-radius: 50%; box-shadow: 0 0 0 5px #e1bee7;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ 
+{% endblock %}

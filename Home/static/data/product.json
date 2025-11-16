@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Cotton T-Shirt",
+    "description": "A timeless and comfortable t-shirt made from 100% premium cotton. Perfect for everyday wear.",
+    "price": 25.99,
+    "category": "T-Shirts",
+    "image": "LEAD_569ZE10_600copy.webp",
+    "rate": 3.7,
+    "discount_price": 20.79
+  },
+  {
+    "id": 2,
+    "name": "Slim-Fit Denim Jeans",
+    "description": "Modern and stylish slim-fit jeans crafted from high-quality denim. A versatile addition to any wardrobe.",
+    "price": 89.99,
+    "category": "Jeans",
+    "image": "BEST-MENS-JEANS-2048px-9811.webp",
+    "rate": 4.1,
+    "discount_price": 71.99
+  },
+  {
+    "id": 3,
+    "name": "Cozy Wool Sweater",
+    "description": "Stay warm and fashionable with this cozy sweater made from a soft wool blend. Ideal for chilly days.",
+    "price": 59.99,
+    "category": "Sweaters",
+    "image": "coosh9-222186-min__preview.jpg",
+    "rate": 3.9,
+    "discount_price": 47.99
+  },
+  {
+    "id": 4,
+    "name": "Leather Biker Jacket",
+    "description": "A classic biker jacket made from genuine leather. Adds a touch of edge to any outfit.",
+    "price": 199.99,
+    "category": "Jackets",
+    "image": "WEASLEY-BLCK-0047h-scaled.jpg",
+    "rate": 4.6,
+    "discount_price": 159.99
+  },
+  {
+    "id": 5,
+    "name": "Casual Linen Shirt",
+    "description": "A lightweight and breathable linen shirt, perfect for a relaxed and casual look.",
+    "price": 45.99,
+    "category": "Shirts",
+    "image": "untitled-session3537.webp",
+    "rate": 4.6,
+    "discount_price": 36.79
+  },
+  {
+    "id": 6,
+    "name": "Tailored Chino Pants",
+    "description": "Versatile and stylish chino pants that can be dressed up or down for any occasion.",
+    "price": 65.0,
+    "category": "Pants",
+    "image": "chino-page-man-wearing-light-khaki-chino-steps-down-the-stairs-3-e1649749357223-975x1300.jpg",
+    "rate": 3.1,
+    "discount_price": 52.0
+  },
+  {
+    "id": 7,
+    "name": "Graphic Print Hoodie",
+    "description": "A comfortable and stylish hoodie with a unique graphic print. Perfect for a streetwear look.",
+    "price": 55.5,
+    "category": "Hoodies",
+    "image": "Hustle_1.webp",
+    "rate": 4.7,
+    "discount_price": 44.4
+  },
+  {
+    "id": 8,
+    "name": "Formal Dress Shirt",
+    "description": "A crisp and elegant dress shirt, perfect for formal events and business meetings.",
+    "price": 75.0,
+    "category": "Shirts",
+    "image": "s7-1390091_alternate4.avif",
+    "rate": 4.2,
+    "discount_price": 60.0
+  },
+  {
+    "id": 9,
+    "name": "Cargo Shorts",
+    "description": "Comfortable and practical cargo shorts with multiple pockets. Ideal for outdoor activities.",
+    "price": 35.99,
+    "category": "Shorts",
+    "image": "1098935.jpg",
+    "rate": 3.8,
+    "discount_price": 28.79
+  },
+  {
+    "id": 10,
+    "name": "V-Neck Sweater",
+    "description": "A classic v-neck sweater made from a soft and comfortable merino wool.",
+    "price": 69.99,
+    "category": "Sweaters",
+    "image": "https://www.mamacha.co.uk/cdn/shop/products/il_fullxfull.2663518508_odxm.jpg?v=1662372180&width=1946",
+    "rate": 4.7,
+    "discount_price": 55.99
+  },
+  {
+    "id": 11,
+    "name": "Polo Shirt",
+    "description": "A classic polo shirt for a smart-casual look.",
+    "price": 39.99,
+    "category": "Shirts",
+    "image": "https://content.josephturner.co.uk/ExtraLarge/mens-blue-mercerised-jersey-polo-shirt-mtpomeblu_1.jpg",
+    "rate": 4.2,
+    "discount_price": 31.99
+  },
+  {
+    "id": 12,
+    "name": "Bomber Jacket",
+    "description": "A stylish and versatile bomber jacket.",
+    "price": 85.0,
+    "category": "Jackets",
+    "image": "https://hips.hearstapps.com/hmg-prod/images/best-bomber-jackets-654a645c613dd.png?crop=0.503xw:1.00xh;0,0&resize=1200:*",
+    "rate": 3.8,
+    "discount_price": 68.0
+  },
+  {
+    "id": 13,
+    "name": "Ripped Jeans",
+    "description": "Fashionable ripped jeans for a trendy look.",
+    "price": 95.0,
+    "category": "Jeans",
+    "image": "https://media.boohoo.com/i/boohoo/cmm03117_light%20blue_xl/male-light%20blue-wide-leg-skater-all-over-ripped-distressed-jeans/?w=900&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "rate": 4.4,
+    "discount_price": 76.0
+  },
+  {
+    "id": 14,
+    "name": "Turtleneck Sweater",
+    "description": "A warm and stylish turtleneck sweater.",
+    "price": 65.0,
+    "category": "Sweaters",
+    "image": "https://shop.mango.com/assets/rcs/pics/static/T8/fotos/S/87010605_08.jpg?imwidth=2048&imdensity=1&ts=1730912671280",
+    "rate": 3.6,
+    "discount_price": 52.0
+  },
+  {
+    "id": 15,
+    "name": "Denim Jacket",
+    "description": "A timeless denim jacket for a casual look.",
+    "price": 79.99,
+    "category": "Jackets",
+    "image": "https://shop.mango.com/assets/rcs/pics/static/T8/fotos/S/87080596_TM.jpg?imwidth=2048&imdensity=1&ts=1731600273475",
+    "rate": 4.1,
+    "discount_price": 63.99
+  },
+  {
+    "id": 16,
+    "name": "Flannel Shirt",
+    "description": "A comfortable and warm flannel shirt.",
+    "price": 49.99,
+    "category": "Shirts",
+    "image": "https://bornprimitive.com/cdn/shop/files/MERGED_0073_Layer130.jpg?v=1696513894",
+    "rate": 4.8,
+    "discount_price": 39.99
+  },
+  {
+    "id": 17,
+    "name": "Jogger Pants",
+    "description": "Comfortable and stylish jogger pants.",
+    "price": 55.0,
+    "category": "Pants",
+    "image": "https://bornprimitive.com/cdn/shop/files/MERGED_0073_Layer130.jpg?v=1696513894",
+    "rate": 4.8,
+    "discount_price": 44.0
+  },
+  {
+    "id": 18,
+    "name": "Crewneck T-Shirt",
+    "description": "A basic and versatile crewneck t-shirt.",
+    "price": 12.99,
+    "category": "T-Shirts",
+    "image": "https://bornprimitive.com/cdn/shop/files/MERGED_0073_Layer130.jpg?v=1696513894",
+    "rate": 4.0,
+    "discount_price": 19.99
+  },
+  {
+    "id": 19,
+    "name": "Pea Coat",
+    "description": "A classic and warm pea coat for cold weather.",
+    "price": 150.0,
+    "category": "Jackets",
+    "image": "https://andsons.co.uk/cdn/shop/files/PeacoatBoardwalkLSMOBILE1_e399cef2-e10a-4a7d-8c62-3f7ab7f1e6e5.jpg?v=1695987141&width=500",
+    "rate": 3.0,
+    "discount_price": 120.0
+  },
+  {
+    "id": 20,
+    "name": "Henley Shirt",
+    "description": "A stylish and comfortable henley shirt.",
+    "price": 35.0,
+    "category": "Shirts",
+    "image": "https://www.woolly.clothing/cdn/shop/files/Ms-LS-Henley-Fog-WOOLLY_4673.jpg?v=1738002521&width=1638",
+    "rate": 3.9,
+    "discount_price": 28.0
+  },
+  {
+    "id": 21,
+    "name": "Cardigan Sweater",
+    "description": "A versatile and stylish cardigan sweater.",
+    "price": 60.0,
+    "category": "Sweaters",
+    "image": "https://m.media-amazon.com/images/I/71m5o8kBjaL._UY350_.jpg",
+    "rate": 3.7,
+    "discount_price": 48.0
+  },
+  {
+    "id": 22,
+    "name": "Windbreaker Jacket",
+    "description": "A lightweight and water-resistant windbreaker jacket.",
+    "price": 70.0,
+    "category": "Jackets",
+    "image": "https://www.aviatornation.com/cdn/shop/products/womens-windbreaker-jacket-neon-coral-jacket-aviator-nation-684000.jpg?v=1639704372",
+    "rate": 3.4,
+    "discount_price": 56.0
+  },
+  {
+    "id": 23,
+    "name": "Straight-Leg Jeans",
+    "description": "Classic straight-leg jeans for a timeless look.",
+    "price": 85.0,
+    "category": "Jeans",
+    "image": "https://whitefoxboutique.co.uk/cdn/shop/files/JORDYN_HIGH_WAISTED_STRAIGHT_LEG_JEANS_16.01.24_05.jpg?v=1725266478",
+    "rate": 3.8,
+    "discount_price": 68.0
+  },
+  {
+    "id": 24,
+    "name": "Long-Sleeve T-Shirt",
+    "description": "A comfortable and versatile long-sleeve t-shirt.",
+    "price": 29.99,
+    "category": "T-Shirts",
+    "image": "https://shop.mango.com/assets/rcs/pics/static/T8/fotos/S/87080619_49.jpg?imwidth=2048&imdensity=1&ts=1730802844491",
+    "rate": 4.6,
+    "discount_price": 23.99
+  },
+  {
+    "id": 25,
+    "name": "Trench Coat",
+    "description": "A classic and stylish trench coat.",
+    "price": 180.0,
+    "category": "Jackets",
+    "image": "https://www.filippa-k.com/dw/image/v2/BFNP_PRD/on/demandware.static/-/Sites-filippa-k-master-catalog/default/dw0d135213/hi-res/31569-0181-0011-2.jpg?sw=1500&sfrm=jpg",
+    "rate": 4.6,
+    "discount_price": 144.0
+  },
+  {
+    "id": 26,
+    "name": "Oxford Shirt",
+    "description": "A versatile and stylish oxford shirt.",
+    "price": 55.0,
+    "category": "Shirts",
+    "image": "https://www.filippa-k.com/dw/image/v2/BFNP_PRD/on/demandware.static/-/Sites-filippa-k-master-catalog/default/dw48387e9a/hi-res/29109-2830-0018-AW24-1.jpg?sw=1500&sfrm=jpg",
+    "rate": 4.7,
+    "discount_price": 44.0
+  },
+  {
+    "id": 27,
+    "name": "Sweatpants",
+    "description": "Comfortable and casual sweatpants.",
+    "price": 45.0,
+    "category": "Pants",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYsa97hJr-sVuldmdNzuRAeqJQiG3KZ0rJeA&s",
+    "rate": 4.2,
+    "discount_price": 36.0
+  },
+  {
+    "id": 28,
+    "name": "Pocket T-Shirt",
+    "description": "A classic t-shirt with a pocket detail.",
+    "price": 22.99,
+    "category": "T-Shirts",
+    "image": "https://www.american-giant.com/cdn/shop/files/M2-2A-2A-BL_32942.jpg?v=1747422478",
+    "rate": 4.1,
+    "discount_price": 18.39
+  },
+  {
+    "id": 29,
+    "name": "Quilted Jacket",
+    "description": "A warm and stylish quilted jacket.",
+    "price": 110.0,
+    "category": "Jackets",
+    "image": "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1703276716-screen-shot-2023-12-22-at-12-24-34-pm-6585f08fa153a.png?crop=1.00xw:0.791xh;0,0.0826xh&resize=980:*",
+    "rate": 3.8,
+    "discount_price": 88.0
+  },
+  {
+    "id": 30,
+    "name": "Chambray Shirt",
+    "description": "A lightweight and stylish chambray shirt.",
+    "price": 50.0,
+    "category": "Shirts",
+    "image": "https://shop.mango.com/assets/rcs/pics/static/T1/fotos/S/17095149_TM.jpg?imwidth=2048&imdensity=1&ts=1750422937833",
+    "rate": 4.8,
+    "discount_price": 40.0
+  },
+  {
+    "id": 31,
+    "name": "Cashmere Sweater",
+    "description": "A luxurious and soft cashmere sweater.",
+    "price": 250.0,
+    "category": "Sweaters",
+    "image": "https://www.kristaelsta.com/wp-content/uploads/2018/02/oversized-cashmere-crew-neck-sweater-jumper-in-camel-kay-07-RES.jpg",
+    "rate": 3.5,
+    "discount_price": 200.0
+  },
+  {
+    "id": 32,
+    "name": "Parka Jacket",
+    "description": "A warm and waterproof parka jacket.",
+    "price": 200.0,
+    "category": "Jackets",
+    "image": "https://andsons.co.uk/cdn/shop/files/ParkaRidgeSnowNavyLSMOBILE3_ae60ebf4-1107-4517-af0e-e7289b242555.jpg?v=1732009832&width=500",
+    "rate": 4.4,
+    "discount_price": 160.0
+  },
+  {
+    "id": 33,
+    "name": "Bootcut Jeans",
+    "description": "Classic bootcut jeans for a timeless look.",
+    "price": 90.0,
+    "category": "Jeans",
+    "image": "https://lsco.scene7.com/is/image/lsco/A87100001-dynamic1-pdp?fmt=jpeg&qlt=70&resMode=sharp2&fit=crop,1&op_usm=0.6,0.6,8&wid=2000&hei=2500",
+    "rate": 3.5,
+    "discount_price": 72.0
+  },
+  {
+    "id": 34,
+    "name": "Striped T-Shirt",
+    "description": "A classic striped t-shirt for a casual look.",
+    "price": 28.0,
+    "category": "T-Shirts",
+    "image": "https://image.uniqlo.com/UQ/ST3/us/imagesgoods/476248/item/usgoods_69_476248_3x4.jpg?width=600",
+    "rate": 4.0,
+    "discount_price": 22.4
+  },
+  {
+    "id": 35,
+    "name": "Field Jacket",
+    "description": "A rugged and stylish field jacket.",
+    "price": 130.0,
+    "category": "Jackets",
+    "image": "https://i.pinimg.com/originals/69/1a/32/691a32d42b1f40da01aa21954385f19d.png",
+    "rate": 4.5,
+    "discount_price": 104.0
+  },
+  {
+    "id": 36,
+    "name": "Hawaiian Shirt",
+    "description": "A fun and colorful Hawaiian shirt.",
+    "price": 40.0,
+    "category": "Shirts",
+    "image": "https://www.alohaoutlet.com/shops/108/images/33451/31_b.jpg.ashx?ver=20190625085037",
+    "rate": 4.7,
+    "discount_price": 32.0
+  },
+  {
+    "id": 37,
+    "name": "Corduroy Pants",
+    "description": "Stylish and comfortable corduroy pants.",
+    "price": 70.0,
+    "category": "Pants",
+    "image": "https://s7.landsend.com/is/image/LandsEnd/541595_LEPP_LS_DXQ?$xl$&wid=1003&hei=1003",
+    "rate": 4.5,
+    "discount_price": 56.0
+  },
+  {
+    "id": 38,
+    "name": "Tank Top",
+    "description": "A basic and versatile tank top.",
+    "price": 15.0,
+    "category": "T-Shirts",
+    "image": "https://m.media-amazon.com/images/I/51YwP9eC3dL._UY1000_.jpg",
+    "rate": 3.3,
+    "discount_price": 12.0
+  },
+  {
+    "id": 39,
+    "name": "Anorak Jacket",
+    "description": "A stylish and practical anorak jacket.",
+    "price": 95.0,
+    "category": "Jackets",
+    "image": "https://www.a-ma-maniere.com/cdn/shop/files/SQUIDLIK93.jpg?v=1733169431&width=3560",
+    "rate": 4.0,
+    "discount_price": 76.0
+  },
+  {
+    "id": 40,
+    "name": "Denim Shirt",
+    "description": "A classic and versatile denim shirt.",
+    "price": 60.0,
+    "category": "Shirts",
+    "image": "https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/B88604s.jpg?im=Resize,width=750",
+    "rate": 4.9,
+    "discount_price": 48.0
+  },
+  {
+    "id": 41,
+    "name": "Cable-Knit Sweater",
+    "description": "A warm and stylish cable-knit sweater.",
+    "price": 80.0,
+    "category": "Sweaters",
+    "image": "https://cdnimg.emmiol.com/pdm/images/FCK0083TO/FCK0083TO-10.jpg",
+    "rate": 3.4,
+    "discount_price": 64.0
+  },
+  {
+    "id": 42,
+    "name": "Puffer Jacket",
+    "description": "A warm and lightweight puffer jacket.",
+    "price": 120.0,
+    "category": "Jackets",
+    "image": "https://i.pinimg.com/736x/c7/8f/ab/c78fab1d324f44beb978da9562c7bfe7.jpg",
+    "rate": 4.0,
+    "discount_price": 96.0
+  },
+  {
+    "id": 43,
+    "name": "Skinny Jeans",
+    "description": "Modern and stylish skinny jeans.",
+    "price": 100.0,
+    "category": "Jeans",
+    "image": "https://shopduer.com/cdn/shop/products/WFLK5221-PERFORMANCE-DENIM-SKINNY-TIDAL_FB_3ab43a47-2f2a-4a64-9190-a961ff44fe4f.jpg?v=1744049869",
+    "rate": 4.5,
+    "discount_price": 80.0
+  },
+  {
+    "id": 44,
+    "name": "Henley T-Shirt",
+    "description": "A comfortable and stylish henley t-shirt.",
+    "price": 32.0,
+    "category": "T-Shirts",
+    "image": "https://www.pacsun.com/dw/image/v2/AAJE_PRD/on/demandware.static/-/Sites-pacsun_storefront_catalog/default/dw97746564/product_images/0702609690039NEW_00_004.jpg?sw=300",
+    "rate": 4.1,
+    "discount_price": 25.6
+  },
+  {
+    "id": 45,
+    "name": "Duffle Coat",
+    "description": "A classic and warm duffle coat.",
+    "price": 170.0,
+    "category": "Jackets",
+    "image": "https://d1fufvy4xao6k9.cloudfront.net/images/landings/48/dufflecoat-mob.jpg",
+    "rate": 4.4,
+    "discount_price": 136.0
+  },
+  {
+    "id": 46,
+    "name": "Plaid Shirt",
+    "description": "A classic and versatile plaid shirt.",
+    "price": 52.0,
+    "category": "Shirts",
+    "image": "https://apparel212.com/cdn/shop/products/17615506_55de6010-7166-4f87-bdd7-674e78ecf82a.jpg?v=1669253690",
+    "rate": 3.9,
+    "discount_price": 41.6
+  },
+  {
+    "id": 47,
+    "name": "Linen Pants",
+    "description": "Lightweight and breathable linen pants.",
+    "price": 68.0,
+    "category": "Pants",
+    "image": "https://www.elahe.in/cdn/shop/files/133_71fae440-af18-49a9-a95a-7e6f905a9094_2048x.jpg?v=1726667841",
+    "rate": 4.3,
+    "discount_price": 54.4
+  },
+  {
+    "id": 48,
+    "name": "Baseball T-Shirt",
+    "description": "A sporty and stylish baseball t-shirt.",
+    "price": 34.0,
+    "category": "T-Shirts",
+    "image": "https://shopthearena.com/cdn/shop/files/60357087STA_800x.jpg?v=1753703816",
+    "rate": 3.7,
+    "discount_price": 27.2
+  },
+  {
+    "id": 49,
+    "name": "Shearling Jacket",
+    "description": "A warm and luxurious shearling jacket.",
+    "price": 300.0,
+    "category": "Jackets",
+    "image": "https://i.pinimg.com/736x/e1/ca/8f/e1ca8f0199dffc9d5954b646d37e4242.jpg",
+    "rate": 3.7,
+    "discount_price": 240.0
+  },
+  {
+    "id": 50,
+    "name": "Cuban Collar Shirt",
+    "description": "A stylish and retro Cuban collar shirt.",
+    "price": 58.0,
+    "category": "Shirts",
+    "image": "https://gorurghash.com/wp-content/uploads/2022/07/605A6068-copy.jpg",
+    "rate": 3.4,
+    "discount_price": 46.4
+  }
+]
